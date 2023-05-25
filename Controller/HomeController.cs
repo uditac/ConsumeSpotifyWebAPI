@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ConsumeSpotifyWebAPI.Controller;
 
+[ApiController]
+[Route("[controller]")]
 public class HomeController : ControllerBase
 {
     
@@ -12,8 +14,11 @@ public class HomeController : ControllerBase
     public HomeController(ISpotifyServices spotifyServices, IConfiguration configuration)
     { 
         _spotifyServices = spotifyServices;
-    } 
+        _configuration = configuration;
+    }
 
+    [HttpGet(Name = "CreateEmployee")]
+   
     public async Task<IActionResult> Index()
     {
         try
